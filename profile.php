@@ -53,11 +53,29 @@
         padding: 8px;
     }
 
-    #friends{
+    #friends {
         clear: both;
         font-size: 12px;
         font-weight: bold;
         color: #405d9b;
+    }
+
+    textarea {
+        width: 100%;
+        border: none;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        height: 60px;
+    }
+
+    #post_button {
+        float: right;
+        background-color: #405d9b;
+        border: none;
+        color: white;
+        padding: 4px;
+        font-size: 14px;
+        border-radius: 2px;
+        width: 50px;
     }
 </style>
 
@@ -119,13 +137,35 @@
                         <br>
                         African Dude
                     </div>
-
-
                 </div>
             </div>
 
             <!-- posts area  -->
-            <div style="min-height: 400px; flex: 2.5 ;"></div>
+            <div style="min-height: 400px; flex: 2.5 ; padding: 20px; padding-right: 0px;">
+                <div style=" border: solid thin #aaa; padding: 10px; background-color: white;">
+                    <textarea placeholder="What's on your mind"></textarea>
+                    <input id="post_button" type="submit" value="Post">
+                    <br>
+                </div>
+
+                <!-- posts -->
+                <div id="post_bar">
+                    <div id="post">
+                        <div>
+                            <img src="assest\user1.jpg" style="width: 75px">
+                        </div>
+                        <div>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                            of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                            but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                            and more recently with desktop publishing software like Aldus PageMaker including versions of
+                            Lorem Ipsum.
+                            <br/><br/>
+                        </div>
+                    </div>
+                </div>
         </div>
 
     </div>
