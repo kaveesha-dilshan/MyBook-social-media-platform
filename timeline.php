@@ -27,7 +27,6 @@
 
     #profile_pic {
         width: 150px;
-        margin-top: -200px;
         border-radius: 50%;
         border: solid 1px white;
     }
@@ -49,8 +48,10 @@
         background-color: white;
         min-height: 400px;
         margin-top: 20px;
-        color: #aaa;
         padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        color: #405d9b;
     }
 
     #friends {
@@ -105,51 +106,15 @@
     <!-- cover area -->
     <div style="width: 800px; margin: auto; min-height: 400px;">
 
-        <div style=" background-color: white; text-align: center; color:#405d9b;">
-
-            <img src="assest\mountain.jpg" style=" width: 100%;">
-            <img id="profile_pic" src="assest\selfie.jpg">
-            <br>
-            <div style=" font-size: 20px;">Mary Banda</div>
-            <br>
-            <div id="menu_button"> Timeline </div>
-            <div id="menu_button"> About </div>
-            <div id="menu_button"> Friends </div>
-            <div id="menu_button"> Photos </div>
-            <div id="menu_button"> Settings </div>
-        </div>
-
         <!-- below cover area -->
         <div style=" display: flex;">
 
             <!-- friends area  -->
             <div style="min-height: 400px; flex: 1;">
                 <div id="friends_bar">
-                    Friends<br>
 
-                    <div id="friends">
-                        <img src="assest\user1.jpg" id="fri_img">
-                        <br>
-                        First User
-                    </div>
-
-                    <div id="friends">
-                        <img src="assest\user2.jpg" id="fri_img">
-                        <br>
-                        Second User
-                    </div>
-
-                    <div id="friends">
-                        <img src="assest\user3.jpg" id="fri_img">
-                        <br>
-                        African Girl
-                    </div>
-
-                    <div id="friends">
-                        <img src="assest\user4.jpg" id="fri_img">
-                        <br>
-                        African Dude
-                    </div>
+                    <img id="profile_pic" src="assest\selfie.jpg"><br>
+                    Mary Banda
                 </div>
             </div>
 
