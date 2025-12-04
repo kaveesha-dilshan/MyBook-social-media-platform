@@ -8,7 +8,7 @@
 <style>
     #bar{
         height: 100px;
-        background-color: rgb(67, 67, 189);
+        background-color: #405d9b;
         color: aliceblue;
         padding: 4px;
     }
@@ -42,7 +42,7 @@
     }
 
     #button{
-        background-color: rgb(67,67, 189);
+        background-color: #405d9b;
         width: 310px;
         height: 45px;
         border-radius: 4px;
