@@ -55,6 +55,6 @@ $DB = new Database();
 $query = "select * from users";
 $data = $DB->read($query);
 
-echo "<pre>";
-print_r($data);
-echo "</pre>";
+// echo "<pre>";
+// print_r($data);
+// echo "</pre>";
