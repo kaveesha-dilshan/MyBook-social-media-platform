@@ -9,6 +9,35 @@ class Signup{
             if(empty($value)){
                 $this->error = $this->error . $key . "is Empty!<br>";
             }
+
+            if($key == "email"){
+                if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/", $value)){
+                    $this->error = $this->error . "Inavaild Email address!<br>";
+                }
+                
+            }
+
+            if($key == "first_name"){
+                if (is_numeric($value)){
+                    $this->error = $this->error . "first name cannot be number!<br>";
+                }
+
+                if (strstr($value," ")){
+                    $this->error = $this->error . "first name cannot have spaces!<br>";
+                }
+                
+            }
+
+            if($key == "last_name"){
+                if (is_numeric($value)){
+                    $this->error = $this->error . "last name cannot be number!<br>";
+                }
+                
+                if (strstr($value," ")){
+                    $this->error = $this->error . "last name cannot have spaces!<br>";
+                }
+                
+            }
         }
     
 
@@ -22,8 +51,8 @@ class Signup{
     }
     public function create_user($data)
     {
-        $first_name = $data['first_name'];
-        $last_name = $data['last_name'];
+        $first_name = ucfirst($data['first_name']);
+        $last_name = ucfirst($data['last_name']);
         $gender = $data['gender'];
         $email = $data['email'];
         $password = $data['password'];

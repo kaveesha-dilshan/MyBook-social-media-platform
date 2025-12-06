@@ -20,6 +20,9 @@
         echo "The following errors occured:<br><br>";
         echo $result;
         echo "</div>";
+    }else{
+        header("Location: profile.php");
+        die;
     }
     
 
