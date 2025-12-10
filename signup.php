@@ -21,7 +21,7 @@
         echo $result;
         echo "</div>";
     }else{
-        header("Location: profile.php");
+        header("Location: login.php");
         die;
     }
     
