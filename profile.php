@@ -1,7 +1,29 @@
 <?php
 
     session_start();
-    print_r($_SESSION);
+    // print_r($_SESSION);
+    include("classes/connect.php");
+    include("classes/login.php");
+
+    // check if user is logged in
+    if(isset($_SESSION['mybook_userid']) && is_numeric($_SESSION['mybook_userid'])){
+
+        $id = $_SESSION['mybook_userid'];
+        $login = new Login();
+
+        $result = $login->check_login($id);
+
+        if($result){
+
+            // retrieve user data;
+            echo "evefedfsgsgsgsgsgsgs";
+        }else{
+
+        }
+    }else{
+        header("Location: login.php");
+        die;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
