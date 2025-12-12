@@ -22,7 +22,7 @@ class Login{
             if($password == $row['password']){
 
                 // create session data
-                $_SESSION['mybook_userid'] = $row['userid'];
+                $_SESSION['mybook_user_id'] = $row['user_id'];
             }else{
                 $this->error .= "wrong password<br>";
             }
@@ -35,7 +35,7 @@ class Login{
 
     public function check_login($id){
 
-        $query = "select userid from users where userid = '$id' limit 1 ";
+        $query = "select user_id from users where user_id = '$id' limit 1 ";
 
         $DB = new Database();
         $result = $DB->read($query);
