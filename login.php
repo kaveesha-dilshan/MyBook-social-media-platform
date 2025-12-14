@@ -15,7 +15,7 @@ session_start();
 
     if($result != ""){
         
-        echo "<div style ='text-align: center; font-size:12px; color:white;background-color:grey;'>";
+        echo "<div style ='text-align:center; font-size:12px; color:white;background-color:grey;'>";
         echo "The following errors occured:<br><br>";
         echo $result;
         echo "</div>";
@@ -95,7 +95,7 @@ session_start();
     </div>
 
     <div id = "log">
-        <form method = "post" autocomplete="off" id="loginForm" >
+        <form method = "post">
 
             Log in to MyBook<br><br>
 

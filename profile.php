@@ -1,14 +1,17 @@
 <?php
 
     session_start();
-    // print_r($_SESSION);
+    
+    // print_r($_SESSION['mybook_user_id']);
     include("classes/connect.php");
     include("classes/login.php");
+    include("classes/user.php");
+    include("classes/post.php");
 
     // check if user is logged in
-    if(isset($_SESSION['mybook_userid']) && is_numeric($_SESSION['mybook_userid'])){
+    if(isset($_SESSION['mybook_user_id']) && is_numeric($_SESSION['mybook_user_id'])){
 
-        $id = $_SESSION['mybook_userid'];
+        $id = $_SESSION['mybook_user_id'];
         $login = new Login();
 
         $result = $login->check_login($id);
@@ -16,7 +19,14 @@
         if($result){
 
             // retrieve user data;
-            echo "evefedfsgsgsgsgsgsgs";
+            $user = new User();
+
+            $user_data = $user->get_data($id);
+
+            if(!$user_data){
+                header("Location: login.php");
+                die;
+            }
         }else{
 
         }
@@ -24,7 +34,23 @@
         header("Location: login.php");
         die;
     }
+
+
+// for posting(posting stasts here)
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+
+        $post = new Post();
+        $id = $_SESSION['mybook_user_id'];
+        $result = $post->create_post($id,$data);
+
+    }
+
+
 ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,7 +152,11 @@
         <div style="width: 800px; margin: auto; font-size: 30px;">
             MyBook &nbsp &nbsp <input type="text" id="search_box" placeholder="Search for people">
             <img src="assest\selfie.jpg" style="width:50px; float:right;">
-        </div>
+
+            <a href="logout.php">
+            <span style="font-size: 11px; float: right; margin: 10px; color: white;">Logout</span>
+            </a>
+    </div>
     </div>
 
     <!-- cover area -->
@@ -137,7 +167,7 @@
             <img src="assest\mountain.jpg" style=" width: 100%;">
             <img id="profile_pic" src="assest\selfie.jpg">
             <br>
-            <div style=" font-size: 20px;">Mary Banda</div>
+            <div style=" font-size: 20px;"><?php echo $user_data['first_name'] . " " . $user_data['last_name']?></div>
             <br>
             <div id="menu_button"> Timeline </div>
             <div id="menu_button"> About </div>
@@ -183,9 +213,13 @@
             <!-- posts area  -->
             <div style="min-height: 400px; flex: 2.5 ; padding: 20px; padding-right: 0px;">
                 <div style=" border: solid thin #aaa; padding: 10px; background-color: white;">
-                    <textarea placeholder="What's on your mind"></textarea>
-                    <input id="post_button" type="submit" value="Post">
-                    <br>
+
+                    <form method="post">
+
+                        <textarea name = "post" placeholder="What's on your mind"></textarea>
+                        <input id="post_button" type="submit" value="Post"><br>
+                    </form>
+
                 </div>
 
                 <!-- posts -->
