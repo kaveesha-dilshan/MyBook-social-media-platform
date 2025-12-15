@@ -41,9 +41,28 @@
 
         $post = new Post();
         $id = $_SESSION['mybook_user_id'];
-        $result = $post->create_post($id,$data);
+        $result = $post->create_post($id,$_POST);
+
+        if($result == ""){
+
+            header("Location: profile.php");
+            die;
+        }else{
+
+            echo "<div style ='text-align:center; font-size:12px; color:white;background-color:grey;'>";
+            echo "The following errors occured:<br><br>";
+            echo $result;
+            echo "</div>";
+        }
 
     }
+
+// collect post
+
+    $post = new Post();
+    $id = $_SESSION['mybook_user_id'];
+
+    $posts = $post->get_posts($id);  
 
 
 ?>
@@ -225,47 +244,18 @@
                 <!-- posts -->
                 <div id="post_bar">
 
-                    <!-- post 01 -->
-                    <div id="post">
-                        <div>
-                            <img src="assest\user1.jpg" style="width: 75px; margin-right: 4px;">
-                        </div>
-                        <div>
-                            <div style=" font-weight: bold; color: #405d9b;">First Guy</div>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                            of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                            but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                            and more recently with desktop publishing software like Aldus PageMaker including versions of
-                            Lorem Ipsum.
-                            <br/><br/>
+                    <?php
 
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style=" color: #999;">April 23 2020</span>
+                        if($posts){
 
-                        </div>
-                    </div>
+                            foreach($posts as $row){
 
-                     <!-- post 02 -->
-                    <div id="post">
-                        <div>
-                            <img src="assest\user4.jpg" style="width: 75px; margin-right: 4px;">
-                        </div>
-                        <div>
-                            <div style=" font-weight: bold; color: #405d9b;">African Dude</div>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                            of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                            but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                            and more recently with desktop publishing software like Aldus PageMaker including versions of
-                            Lorem Ipsum.
-                            <br/><br/>
+                                include("post.php");
 
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style=" color: #999;">April 23 2020</span>
-
-                        </div>
-                    </div>
+                            }
+                        }
+                                          
+                    ?>
 
                 </div>
         </div>

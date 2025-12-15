@@ -8,7 +8,7 @@ class Post{
 
         if(!empty($data['post'])){
 
-            $post = addcslashes($data['post']);
+            $post = addslashes($data['post']);
             $postid = $this->create_postid();
 
             $qurey = "insert into posts (user_id, postid, post) values ('$user_id', '$postid', '$post')";
@@ -23,8 +23,21 @@ class Post{
         return $this->error;
     }
 
-    private function create_postid() {
+    public function get_posts($id){
 
+        $qurey = "select * from posts where user_id = '$id' order by id desc limit 10";
+
+        $DB = new Database();
+        $result = $DB->read($qurey);
+
+        if($result){
+            return $result;
+        }else{
+            return false;
+        }
+    }
+    private function create_postid() {
+ 
         $length = rand(4,19);
         $number = "";
         for($i = 0; $i<$length; $i++){
